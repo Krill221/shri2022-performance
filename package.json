@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@principalstudio/html-webpack-inject-preload": "^1.2.7",
     "@squoosh/lib": "^0.4.0",
     "@webpack-cli/generators": "^2.5.0",
     "autoprefixer": "^10.4.13",

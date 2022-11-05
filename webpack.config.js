@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const HtmlWebpackInjectPreload = require('@principalstudio/html-webpack-inject-preload');
 
 const isProduction = process.env.NODE_ENV == "production";
 
@@ -27,9 +28,14 @@ const config = {
       filename: 'index.html',
       //inject: false
     }),
-
-    // Add your plugins here
-    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+    new HtmlWebpackInjectPreload({
+      files: [
+        {
+          match: /\.(webp)$/i,
+          attributes: { as: 'image' },
+        },
+      ],
+    }),
   ],
   module: {
     rules: [
