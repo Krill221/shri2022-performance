@@ -7,6 +7,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const HtmlWebpackInjectPreload = require('@principalstudio/html-webpack-inject-preload');
 
+
 const isProduction = process.env.NODE_ENV == "production";
 
 const stylesHandler = isProduction
@@ -27,7 +28,6 @@ const config = {
       template: "src/index.html",
       filename: 'index.html',
       favicon: "./src/favicon.ico"
-      //inject: false
     }),
     new HtmlWebpackInjectPreload({
       files: [
@@ -42,21 +42,24 @@ const config = {
     rules: [
       {
         test: /\.css$/i,
-        use: [stylesHandler, "css-loader", "postcss-loader"],
+        use: [
+          stylesHandler,
+          {
+            loader: 'css-loader',
+          },
+          "postcss-loader"],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|webp)$/i,
         type: "asset",
       },
-
-      // Add your rules for custom modules here
-      // Learn more about loaders from https://webpack.js.org/loaders/
     ],
   },
   optimization: {
     minimizer: [
       `...`,
-      new CssMinimizerPlugin(),
+      new CssMinimizerPlugin({
+      }),
       new ImageMinimizerPlugin({
         minimizer: {
           implementation: ImageMinimizerPlugin.sharpMinify,
