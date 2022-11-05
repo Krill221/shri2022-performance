@@ -81,19 +81,19 @@
 
     function makeMenu(node) {
         let expanded = false;
-        const links = document.querySelector('.header__links');
+        const links = document.querySelector('.helis');
 
         node.addEventListener('click', () => {
             expanded = !expanded;
             node.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-            node.querySelector('.header__menu-text').textContent = expanded ? 'Закрыть меню' : 'Открыть меню';
-            links.classList.toggle('header__links_opened', expanded);
-            links.classList.add('header__links-toggled');
+            node.querySelector('.heme-text').textContent = expanded ? 'Закрыть меню' : 'Открыть меню';
+            links.classList.toggle('helis_opened', expanded);
+            links.classList.add('helis-toggled');
         });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
         Array.from(document.querySelectorAll('.main__devices')).forEach(makeTabs);
-        Array.from(document.querySelectorAll('.header__menu')).forEach(makeMenu);
+        Array.from(document.querySelectorAll('.heme')).forEach(makeMenu);
     });
 })();

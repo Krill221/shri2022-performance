@@ -56,7 +56,7 @@ html, body {
     background-size: contain;
 }
 
-.header__menu {
+.heme {
     display: none;
     width: 3.5rem;
     height: 100%;
@@ -70,12 +70,12 @@ html, body {
 }
 
 @media (max-width: 768px) {
-    .header__menu {
+    .heme {
         display: block;
     }
 }
 
-.header__links {
+.helis {
     display: flex;
     gap: 1.75rem;
     margin: 0;
@@ -84,7 +84,7 @@ html, body {
 }
 
 @media (max-width: 768px) {
-    .header__links {
+    .helis {
         display: none;
 
         position: absolute;
@@ -99,13 +99,13 @@ html, body {
         box-shadow: 0 2px 6px 0 rgba(197,186,186,0.50);
     }
 
-    .header__links-toggled {
+    .helis-toggled {
         display: flex;
         animation: hideMenu .3s ease-in-out 1;
         animation-fill-mode: both;
     }
 
-    .header__links_opened {
+    .helis_opened {
         display: flex;
         visibility: visible;
         animation: showMenu .3s ease-in-out 1;
@@ -142,7 +142,7 @@ html, body {
     padding: 0;
 }
 
-.header__link {
+.heli {
     font-weight: bold;
     opacity: .6;
     transition: opacity .15s ease-in-out;
@@ -150,11 +150,11 @@ html, body {
     color: #333333;
 }
 
-.header__link:hover {
+.heli:hover {
     opacity: 1;
 }
 
-.header__link_current {
+.helic {
     opacity: 1;
 }
 
