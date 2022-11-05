@@ -6,6 +6,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const HtmlWebpackInjectPreload = require('@principalstudio/html-webpack-inject-preload');
+const CompressionPlugin = require("compression-webpack-plugin");
+const zlib = require("zlib");
 
 
 const isProduction = process.env.NODE_ENV == "production";
@@ -37,6 +39,19 @@ const config = {
           attributes: { as: 'image' },
         },
       ],
+    }),
+    new CompressionPlugin({
+      filename: "[path][base].br",
+      algorithm: "brotliCompress",
+      test: /\.(js|css|html|svg|webp)$/,
+      compressionOptions: {
+        params: {
+          [zlib.constants.BROTLI_PARAM_QUALITY]: 11,
+        },
+      },
+      threshold: 10240,
+      minRatio: 0.8,
+      deleteOriginalAssets: true,
     }),
   ],
   module: {
