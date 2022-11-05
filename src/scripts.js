@@ -6,32 +6,32 @@
     }
 
     function makeTabs(node) {
-        let selected = node.querySelector('.section__tab_active').dataset.id;
-        const tabs = node.querySelectorAll('.section__tab');
+        let selected = node.querySelector('.seta').dataset.id;
+        const tabs = node.querySelectorAll('.setab');
         const list = Array.from(tabs).map(node => node.dataset.id);
-        const select = node.querySelector('.section__select');
+        const select = node.querySelector('.sese');
 
         function selectTab(newId) {
-            const newTab = node.querySelector(`.section__tab[data-id=${newId}]`);
-            const newPanel = node.querySelector(`.section__panel[data-id=${newId}]`);
-            const oldTab = node.querySelector('.section__tab_active');
-            const oldPanel = node.querySelector('.section__panel:not(.section__panel_hidden)');
+            const newTab = node.querySelector(`.setab[data-id=${newId}]`);
+            const newPanel = node.querySelector(`.sp[data-id=${newId}]`);
+            const oldTab = node.querySelector('.seta');
+            const oldPanel = node.querySelector('.sp:not(.sph)');
 
             selected = newId;
 
-            oldTab.classList.remove('section__tab_active');
+            oldTab.classList.remove('seta');
             oldTab.setAttribute('aria-selected', 'false');
             oldTab.removeAttribute('tabindex');
-            newTab.classList.add('section__tab_active');
+            newTab.classList.add('seta');
             newTab.setAttribute('aria-selected', 'true');
             newTab.setAttribute('tabindex', '0');
             newTab.focus({
                 preventScroll: true
             });
 
-            oldPanel.classList.add('section__panel_hidden');
+            oldPanel.classList.add('sph');
             oldPanel.setAttribute('aria-hidden', 'true');
-            newPanel.classList.remove('section__panel_hidden');
+            newPanel.classList.remove('sph');
             newPanel.setAttribute('aria-hidden', 'false');
 
             select.value = newId;
