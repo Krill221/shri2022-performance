@@ -40,7 +40,9 @@ const config = {
         },
       ],
     }),
-    new CompressionPlugin(),
+    new CompressionPlugin({
+      deleteOriginalAssets: true,
+    }),
   ],
   module: {
     rules: [
