@@ -27,7 +27,8 @@ const config = {
     new HtmlWebpackPlugin({
       template: "src/index.html",
       filename: 'index.html',
-      favicon: "./src/favicon.ico"
+      favicon: "./src/favicon.ico",
+      inject: false
     }),
     new HtmlWebpackInjectPreload({
       files: [
