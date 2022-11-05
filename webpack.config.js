@@ -57,26 +57,26 @@ const config = {
     minimizer: [
       `...`,
       new CssMinimizerPlugin(),
-      new ImageMinimizerPlugin({
-        minimizer: {
-          implementation: ImageMinimizerPlugin.sharpMinify,
-          options: {
-            encodeOptions: {
-              jpeg: {
-                quality: 100,
-              },
-              webp: {
-                lossless: false,
-              },
-              avif: {
-                lossless: true,
-              },
-              png: {},
-              gif: {},
-            },
-          },
-        },
-      }),
+      // new ImageMinimizerPlugin({
+      //   minimizer: {
+      //     implementation: ImageMinimizerPlugin.sharpMinify,
+      //     options: {
+      //       encodeOptions: {
+      //         jpeg: {
+      //           quality: 100,
+      //         },
+      //         webp: {
+      //           lossless: false,
+      //         },
+      //         avif: {
+      //           lossless: true,
+      //         },
+      //         png: {},
+      //         gif: {},
+      //       },
+      //     },
+      //   },
+      // }),
     ],
     minimize: true,
   },
