@@ -41,7 +41,7 @@ const config = {
       ],
     }),
     new CompressionPlugin({
-      deleteOriginalAssets: true,
+      deleteOriginalAssets: false,
     }),
   ],
   module: {
