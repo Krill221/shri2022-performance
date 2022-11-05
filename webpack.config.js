@@ -8,6 +8,8 @@ const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const HtmlWebpackInjectPreload = require('@principalstudio/html-webpack-inject-preload');
 const CompressionPlugin = require("compression-webpack-plugin");
 const zlib = require("zlib");
+const TerserPlugin = require("terser-webpack-plugin");
+
 
 
 const isProduction = process.env.NODE_ENV == "production";
@@ -40,9 +42,9 @@ const config = {
         },
       ],
     }),
-    new CompressionPlugin({
-      deleteOriginalAssets: false,
-    }),
+    // new CompressionPlugin({
+    //   deleteOriginalAssets: false,
+    // }),
   ],
   module: {
     rules: [
@@ -52,8 +54,12 @@ const config = {
           stylesHandler,
           {
             loader: 'css-loader',
+            options: {
+              //modules: true,
+            },
           },
-          "postcss-loader"],
+          //"postcss-loader"
+        ],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|webp)$/i,
@@ -64,28 +70,28 @@ const config = {
   optimization: {
     minimizer: [
       `...`,
-      new CssMinimizerPlugin({
-      }),
-      new ImageMinimizerPlugin({
-        minimizer: {
-          implementation: ImageMinimizerPlugin.sharpMinify,
-          options: {
-            encodeOptions: {
-              jpeg: {
-                quality: 100,
-              },
-              webp: {
-                lossless: false,
-              },
-              avif: {
-                lossless: true,
-              },
-              png: {},
-              gif: {},
-            },
-          },
-        },
-      }),
+      new TerserPlugin(),
+      new CssMinimizerPlugin(),
+      // new ImageMinimizerPlugin({
+      //   minimizer: {
+      //     implementation: ImageMinimizerPlugin.sharpMinify,
+      //     options: {
+      //       encodeOptions: {
+      //         jpeg: {
+      //           quality: 100,
+      //         },
+      //         webp: {
+      //           lossless: false,
+      //         },
+      //         avif: {
+      //           lossless: true,
+      //         },
+      //         png: {},
+      //         gif: {},
+      //       },
+      //     },
+      //   },
+      // }),
     ],
     minimize: true,
   },
@@ -94,7 +100,9 @@ const config = {
 module.exports = () => {
   if (isProduction) {
     config.mode = "production";
-    config.plugins.push(new MiniCssExtractPlugin());
+    config.plugins.push(new MiniCssExtractPlugin({
+      filename: "[name].css",
+    }));
   } else {
     config.mode = "development";
   }

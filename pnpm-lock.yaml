@@ -23,6 +23,7 @@ specifiers:
   remove: ^0.1.5
   sharp: ^0.31.2
   style-loader: ^3.3.1
+  terser-webpack-plugin: ^5.3.6
   webp-loader: ^0.6.0
   webpack: ^5.74.0
   webpack-assets-manifest: ^5.1.0
@@ -54,6 +55,7 @@ devDependencies:
   prettier: 2.7.1
   sharp: 0.31.2
   style-loader: 3.3.1_webpack@5.74.0
+  terser-webpack-plugin: 5.3.6_webpack@5.74.0
   webp-loader: 0.6.0_5v66e2inugklgvlh4huuavolfq
   webpack: 5.74.0_webpack-cli@4.10.0
   webpack-assets-manifest: 5.1.0_webpack@5.74.0
